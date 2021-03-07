@@ -6,8 +6,6 @@ import face2 from 'assets/image/face-male-2.jpg'
 import face3 from 'assets/image/face-male-3.jpg'
 import face4 from 'assets/image/face-male-4.jpg'
 
-import "story.css";
-
 const AvatarInfo = {
   title: "UI 组件/Avatar",
   component: Avatar,
