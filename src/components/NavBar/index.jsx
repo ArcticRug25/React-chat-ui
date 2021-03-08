@@ -35,10 +35,10 @@ function NavBar({ ...rest }) {
 
 function MenuItem({ icon, active, showBadge, ...rest }) {
   return (
-    <StyledMenuItem active={active} {...rest}>
+    <StyledMenuItem active={active?1:0} {...rest}>
       <a href="#">
         <Badge show={showBadge}>
-          <MenuIcon active={active} icon={icon} />
+          <MenuIcon active={active?1:0  } icon={icon} />
         </Badge>
       </a>
     </StyledMenuItem>
