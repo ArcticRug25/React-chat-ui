@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import StyledParagraph from "./style";
 
 function Paragraph({ children, ellipsis, ...rest }) {
-  console.log(rest); // as 将这个组件渲染成p标签
   return (
     <StyledParagraph as="p" ellipsis={ellipsis} {...rest}>
       {children}
