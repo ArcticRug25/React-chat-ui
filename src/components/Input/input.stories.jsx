@@ -16,6 +16,10 @@ export const Default = () => <Input />;
 
 export const Search = () => <Input.Search />;
 
+export const InputTextWithLabel = () => <Input.Text label="昵称" />;
+
+export const InputTextWithoutLabel = () => <Input.Text />
+
 export const WithAffix = () => (
   <Input
     prefix={<Icon icon={ClipIcon} color="#ccc" />}

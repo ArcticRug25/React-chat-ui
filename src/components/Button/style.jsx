@@ -29,7 +29,7 @@ const StyledButton = styled.button`
     box-shadow:0 6px 12px rgba(0,0,0,.1);
     ${({ shape }) => shapeVariants[shape]};
     ${({ type }) => typeVariants[type]};
-    ${({ bgColor }) => `background-color:${bgColor}`}
+    ${({ bgColor }) => `background-color:${bgColor}`};
     /* background-color:${({ bgColor }) => bgColor} */
 
     transform:scale(1);

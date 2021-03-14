@@ -5,6 +5,7 @@ import { ReactComponent as SearchIcon } from "assets/icon/search.svg";
 import Icon from "components/Icon";
 import { useTheme } from "styled-components"; // 主题钩子函数 可以获取主题对象 给组件对象的自定义的属性传递值 css做不到
 import "styled-components/macro"; // 可以在组件里用css属性 给组件加样式
+import InputText from "components/InputText";
 
 function Input({ placeholder = "请输入内容...", prefix, suffix, ...rest }) {
   return (
@@ -31,6 +32,7 @@ function Search({ placeholder = "请输入搜索内容...", ...rest }) {
 }
 
 Input.Search = Search;
+Input.Text = InputText;
 
 Input.propTypes = {
   placeholder: PropTypes.string,

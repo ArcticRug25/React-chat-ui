@@ -20,6 +20,7 @@ const MyChatBubble = styled(ChatBubble).attrs({ type: "mine" })`
 `;
 
 const StyledConversation = styled.div`
+  height:100%;
   display: flex;
   flex-direction: column;
   border: 1px solid ${({ theme }) => theme.gray4};

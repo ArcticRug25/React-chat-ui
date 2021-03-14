@@ -16,4 +16,13 @@ export const Default = () => (
   </Select>
 );
 
+export const FormSelect = () => {
+  return (
+    <Select type="form">
+      <Option>北京市</Option>
+      <Option>湖北省</Option>
+    </Select>
+  );
+}
+
 export default SelectInfo;
