@@ -10,6 +10,7 @@ const SettingsItemControl = styled.div`
 const StyledSettingsGroup = styled.div``;
 
 const StyledSettings = styled.div`
+    /* min-height:100vh; */
     padding:72px;
 `;
 

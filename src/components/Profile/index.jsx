@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link} from 'react-router-dom'
 import StyledProfile, {
   SocialLinks,
   ContactSection,
@@ -33,6 +34,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 function Profile({
+  onCloseClick,
   showEditBtn,
   showCloseIcon = true,
   onEdit,
@@ -42,7 +44,7 @@ function Profile({
 }) {
   return (
     <StyledProfile {...rest}>
-      {showCloseIcon && <CloseIcon icon={Cross} />}
+      {showCloseIcon && <CloseIcon icon={Cross} onClick={onCloseClick} />}
       <Avatar
         css={`
           margin: 26px 0;
@@ -126,7 +128,7 @@ function Profile({
       <AlbumSection>
         <AlbumTitle>
           <Text type="secondary">相册 （31）</Text>
-          <a>查看全部</a>
+          <Link to="">查看全部</Link>
         </AlbumTitle>
         <Album>
           <Photo src={photo1} alt=""></Photo>

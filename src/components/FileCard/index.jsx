@@ -27,16 +27,16 @@ const fileIcons = {
   ppt: FilePpt,
 };
 
-function FileCard({ children, ...rest }) {
+function FileCard({file, children, ...rest }) {
   return (
     <StyledFileCard {...rest}>
       <FileIcon icon={fileIcons.zip} />
-      <FileName>Source Code.zip</FileName>
-      <FileSize>1.5M</FileSize>
+      <FileName>{file.name}</FileName>
+      <FileSize>{file.size}</FileSize>
       <Options>
         <Icon icon={OptionsIcon} opacity={0.3} />
       </Options>
-      <Time>2021年02月02日</Time>
+      <Time>{file.updateAt}</Time>
     </StyledFileCard>
   );
 }

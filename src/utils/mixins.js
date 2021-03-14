@@ -23,6 +23,7 @@ export const activeBar = (
     position:absolute;
     height:100%;
     left: 0;
+    transition:.4s cubic-bezier(.16,1,.3,1);
   }
 
   &::before{

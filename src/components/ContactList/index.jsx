@@ -3,14 +3,20 @@ import PropTypes from "prop-types";
 import StyledContactList, { Contacts } from "./style";
 import FilterList from "components/FilterList";
 import ContactCard from "components/ContactCard";
+import useStaggeredList from "hooks/useStaggeredList";
+import { animated } from "react-spring";
+import contactsData from 'data/contacts';
 
 function ContactList({ children, ...rest }) {
+  const trailAnimes = useStaggeredList(contactsData.length);
   return (
     <StyledContactList {...rest}>
       <FilterList options={["新添加优先", "按姓名排序"]} actionLabel="添加好友">
         <Contacts>
-          {new Array(10).fill(0).map((_, i) => (
-            <ContactCard key={i} />
+          {contactsData.map((contact, i) => (
+            <animated.div key={contact.id} style={trailAnimes[i]}>
+              <ContactCard key={contact.id} contact={contact} />
+            </animated.div>
           ))}
         </Contacts>
       </FilterList>

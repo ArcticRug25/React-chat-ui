@@ -4,7 +4,6 @@ import Button from "components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SocialIcon({ icon, bgColor, href, ...rest }) {
-    console.log(bgColor);
   return (
     <Button
       size="30px"

@@ -4,8 +4,12 @@ import StyledNoteList from "./style";
 import { Notes } from "./style";
 import NoteCard from "components/NoteCard";
 import FilterList from "components/FilterList";
+import { animated } from "react-spring";
+import useStaggeredList from "hooks/useStaggeredList";
+import noteData from 'data/notes'
 
 function NoteList({ children, ...rest }) {
+  const trailAnimes = useStaggeredList(noteData.length);
   return (
     <StyledNoteList {...rest}>
       <FilterList
@@ -13,8 +17,10 @@ function NoteList({ children, ...rest }) {
         actionLabel="添加笔记"
       >
         <Notes>
-          {new Array(10).fill(0).map((_, index) => (
-            <NoteCard key={index} />
+          {noteData.map((note, index) => (
+            <animated.div key={note.id} style={trailAnimes[index]}>
+              <NoteCard key={note.id} note={note} />
+            </animated.div>
           ))}
         </Notes>
       </FilterList>

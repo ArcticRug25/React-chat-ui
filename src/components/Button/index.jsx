@@ -10,7 +10,6 @@ function Button({
   bgColor,
   ...rest
 }) {
-  console.log(bgColor);
   return (
     <StyledButton
       type={type}

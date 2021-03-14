@@ -1,46 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledMessageList, { ChatList } from "./style";
-import Filter from "components/Filter";
-import Select from "components/Select";
-import Option from "components/Option";
-import Button from "components/Button";
-import Icon from "components/Icon";
 import MessageCard from "components/MessageCard";
 
-import { ReactComponent as plus } from "assets/icon/plus.svg";
-import face1 from "assets/image/face-male-1.jpg";
+// import { ReactComponent as plus } from "assets/icon/plus.svg";
 import FilterList from "components/FilterList";
+import { animated } from "react-spring";
+import useStaggeredList from "hooks/useStaggeredList";
+import messageData from 'data/messages'
 
 function MessageList({ children, ...rest }) {
+  const trailAnimes = useStaggeredList(messageData.length);
+
   return (
     <StyledMessageList {...rest}>
       <FilterList
-        options={["最新消息优先","在线好友优先"]}
+        options={["最新消息优先", "在线好友优先"]}
         actionLabel="创建会话"
       >
-      <ChatList>
-        {[1, 2, 3, 4, 5, 6].map((_, index) => (
-          <MessageCard
-            key={index}
-            active={index === 3}
-            replied={index % 3 === 0}
-            avatarSrc={face1}
-            name="李铭浩"
-            avatarStatus="online"
-            statusText="在线"
-            time="3 小时之前"
-            message="即使爬到最高的山上，一次也只能脚踏实地地"
-            unreadCount={2}
-          />
-        ))}
-      </ChatList>
-   
+        <ChatList>
+          {messageData.map((message, index) => (
+            <animated.div key={message.id} style={trailAnimes[index]}>
+              <MessageCard
+                key={message.id}
+                active={index === 3}
+                replied={message.replied}
+                avatarSrc={message.avatarSrc}
+                name={message.name}
+                avatarStatus={message.status}
+                statusText={message.statusText}
+                time={message.time}
+                message={message.message}
+                unreadCount={message.unreadCount}
+              />
+            </animated.div>
+          ))}
+        </ChatList>
       </FilterList>
-       </StyledMessageList>
+    </StyledMessageList>
   );
 }
-
 
 MessageList.propTypes = {
   children: PropTypes.any,

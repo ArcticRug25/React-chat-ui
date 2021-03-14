@@ -1,18 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
 import male1 from "../../assets/image/face-male-1.jpg";
-import StyledConversation,{ Conversations ,MyChatBubble}  from "./style";
+import StyledConversation, { Conversations, MyChatBubble } from "./style";
 import TitleBar from "components/TitleBar";
 import Footer from "components/Footer";
 import Emoji from "components/Emoji";
 import ChatBubble from "components/ChatBubble";
 import VoiceMessage from "components/VoiceMessage";
+import { useSpring } from "react-spring";
 
-function Conversation({ children, ...rest }) {
+function Conversation({
+  style,
+  onAvatarClick,
+  onVideoClick,
+  children,
+  ...rest
+}) {
+  const tBarAnimeProps = useSpring({
+    opacity: 1,
+    transform: "translate3d(0,0,0)",
+    from: { opacity: 0, transform: "translate3d(0,-50px,0)" },
+    delay: 500,
+  });
+
+  const convsAnimeProps = useSpring({
+    opacity: 1,
+    transform: "translate3d(0,0,0)",
+    from: { opacity: 0, transform: "translate3d( 50px,0,0)" },
+    delay: 600,
+  });
+
+  const ftAnimeProps = useSpring({
+    opacity: 1,
+    transform: "translate3d(0,0,0)",
+    from: { opacity: 0, transform: "translate3d(0,50px,0" },
+    delay: 700,
+  });
+
   return (
     <StyledConversation {...rest}>
-      <TitleBar status="online" src={male1} name="李铭浩" statusText="在线" />
-      <Conversations>
+      <TitleBar
+        onAvatarClick={onAvatarClick}
+        onVideoClick={onVideoClick}
+        status="online"
+        src={male1}
+        name="李铭浩"
+        statusText="在线"
+        animeProps={tBarAnimeProps}
+      />
+      <Conversations style={convsAnimeProps}>
         <ChatBubble time="昨天 下午14:26">Hi 小宇，忙什么呢？</ChatBubble>
         <MyChatBubble time="昨天 下午16:30">
           Hello 啊！最近就是一直在加班改 bug，然后 怼产品，怼 UI，各种怼！
@@ -25,7 +61,7 @@ function Conversation({ children, ...rest }) {
           <Emoji label="smile">🤘</Emoji>
         </MyChatBubble>
       </Conversations>
-      <Footer />
+      <Footer animeProps={ftAnimeProps} />
     </StyledConversation>
   );
 }

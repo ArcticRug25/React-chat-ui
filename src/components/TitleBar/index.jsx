@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledTitleBar, { Title, Actions } from "./style";
-import {DropdownItem} from '../../components/Dropdown/style'
+import { DropdownItem } from "../../components/Dropdown/style";
 import Avatar from "components/Avatar";
 import Paragraph from "components/Paragraph";
 import Text from "components/Text";
@@ -12,10 +12,21 @@ import { ReactComponent as Camera } from "assets/icon/camera.svg";
 import { ReactComponent as Options } from "assets/icon/options.svg";
 import Dropdown from "components/Dropdown";
 
-function TitleBar({ children, status, src, name, statusText, ...rest }) {
+function TitleBar({
+  animeProps,
+  style,
+  onAvatarClick,
+  onVideoClick,
+  children,
+  status,
+  src,
+  name,
+  statusText,
+  ...rest
+}) {
   return (
-    <StyledTitleBar {...rest}>
-      <Avatar status={status} src={src} />
+    <StyledTitleBar style={{...style,...animeProps}} {...rest}>
+      <Avatar onClick={onAvatarClick} status={status} src={src} />
       <Title>
         <Paragraph size="large">{name}</Paragraph>
         <Paragraph type="secondary">
@@ -24,7 +35,7 @@ function TitleBar({ children, status, src, name, statusText, ...rest }) {
         </Paragraph>
       </Title>
       <Actions>
-        <Icon opacity={0.3} icon={Call} />
+        <Icon opacity={0.3} icon={Call} onClick={onVideoClick} />
         <Icon opacity={0.3} icon={Camera} />
         <Dropdown
           content={
